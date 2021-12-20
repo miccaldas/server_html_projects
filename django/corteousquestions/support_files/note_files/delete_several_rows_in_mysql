@@ -1,0 +1,7 @@
+635
+
+ To delete several rows from a MySQL db,
+ do this:
+ ---------------------------------------
+ DELETE FROM <table_name> WHERE id > 6
+ ---------------------------------------

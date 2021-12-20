@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Notes Tag Management Project Notes</title><link rel="stylesheet" href="/css/normalize.css"><link rel="stylesheet" href="/css/heti.min.css"><link rel="stylesheet" href="/css/hexo-theme-adoubi.css"><link rel="icon" href="/images/favicon.ico"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+</head><body><div class="header"><a class="github-link" target="_blank" rel="noopener" href="https://notabug.org/micaldas"><img class="github-image" src="/images/Aquicon-Github-small.png"></a><a class="email-link" href="mailto:mclds@protonmail.com"><img class="email-image" src="/images/email-small.png"></a><a class="subscribe-link" href="/atom.xml"><img class="subscribe-image" src="/images/subscribe-small.png"></a></div><div class="content"><div class="post-item"></div><h2 class="post-title-wrapper"><p class="post-title">Notes Tag Management Project Notes</p></h2><div class="post-date"><time datetime="2021-09-19T18:45:44.283Z">2021-09-19</time></div><div class="post-content"><p>date: 03/09/2021<br>  title: The Basics  </p>
+<p>  My objective now is to create a rough sketch of the macro tasks that the<br>  will entail. So as I not loose track, as I so often do.<br>  The idea is for the insertion of new tags and the deletion of old ones, be<br>  totally automatic, having no human participation.<br>  For this to happen we  need:  </p>
+<ol>
+<li>Know what the current tags are,  </li>
+<li>verify all newly inputed tags to see if they are not in our record,  </li>
+<li>add them to our record if they’re new.  </li>
+<li>We need to know if someone updates a tag. He could have erased a tag<br>or created a new one.  </li>
+<li>We need to update the file with new content,  </li>
+<li>also we need to erase it when necessary.  </li>
+<li>Tags that have 0 connections WILL BE ELIMINATED. </li>
+</ol>
+<p>  #####################     </p>
+<p>  Looking at this, and from the top of my head; two ideas came to me:<br>  DISCARD THE FILE. It’s not needed, it’s the remnant of an old idea, we<br>  would be much better served with a database.<br>  USER GUIDANCE, when choosing the tags:  </p>
+<ul>
+<li>Create a system to tell them if there’s already tags with the same name.  </li>
+</ul>
+<p>  #####################  </p>
+<p>  Database Roadmap:  </p>
+<pre><code>- Test if everything is OK, when we discard of what, seems, to be  
+  spurious code, since we abandoned the word cloud idea.  
+- Every time that the HP would be called, it would do a database query,  
+  through php, asking for all the tags. That would be what it shows.
+- Maybe is not necessary to build anything vis a vis the database.  
+  Probably the &#39;notes&#39; db is more than the enough. We just need:  
+    tag names,  
+    number of links. To know if they&#39;re dead or not.  
+</code></pre>
+<p>  And I think that’s it for now. I’m going to start on the database, and see<br>  where we go from there.  </p>
+<h3><span id="update">UPDATE:</span></h3><p>I’ve been thinking a little more about it, and there’s nothing we can add,<br>at this moment, with these objectives, to the db, that would make any<br>difference. What we have to do is create more awareness about the processes<br>of the functionalities modules, that’ll give us most of the information<br>we need. See entry below, for more on this issue.  </p>
+<p>#############################################################################  </p>
+<p>  date: 03/09/2021<br>  title: Tag Evaluation Structure  </p>
+<p>  I’m thinking of something along these lines for the verification of the<br>  tags, at the moment of adding a or updating it.<br>  I think it can happen one of of three things:  </p>
+<pre><code>1. The tag is new. Do nothing. The tag is already in the database,  
+our functions run from information from it. Nothing has to be updated.  
+It should output a &#39;The tag is new&#39; information string.  
+
+2. The tag is known. Do nothing. All the work is done.  
+Even the number of connections is automatically taken care of by  
+the database. Output, &#39;The tag X ha now y connections.&#39;  
+
+3. The tag is similar to other tags. This is more challenging.  
+I still have no idea how to do this.  
+I will take care first of linking the function modules to this new thing  
+we&#39;re doing.  
+</code></pre>
+<p>#############################################################################</p>
+<p>  date: 04/09/2021<br>  title: Connect Tag Evaluation to Functionalities Modules  </p>
+<p>  The tag evaluation class is almost finished, I still have to add a method<br>  to erase the tag if the connection number gets to 0.<br>  But, at the moment it can:  </p>
+<pre><code>1. Assess if the tag is new.  
+2. Send a message telling the user this.  
+3. Assess if it was already in the database.  
+3. If 3 is positive, send a message to the user, with the updated  
+connections number of tag.  
+4. Verify if the tag inserted is very much like an old tag, using a  
+library called &quot;Fuzzywuzzy&quot;, link in the &#39;bkmks&#39; app. If not, do nothing,  
+if yes, send a message to the user, suggesting him that he might want to 
+replace it.  
+</code></pre>
+<p>  I intend to add today, a link in the functionalities modules to the class that has all the tag evaluation methods.<br>  I’m thinking that creating a simple variable with a list of the three keywords, that can then be imported to class, will be enough.<br>  It’ll be also necessary to insert in ‘add.py’, a mechanism that allows the user to see the tag suggestion done by the similarites evaluation  method.<br>  Now that I think about it, this poses a problem, the class can’t be, at the same time, importing from ‘add.py’ and exporting to it.<br>  I think that the solution is to transform the evaluation function into a separate module.  </p>
+<p>###############################################################################</p>
+<p>  date: 07/09/2021<br>  title: Passed fuzzy function to ‘add.py’</p>
+<p>  Because of import issues, I did what I didn’t want to do, added the fuzzy function to add.py.<br>  This didn’t solve anything as I am still unable to make it work, even inside the same file.<br>  It needs to be debugged.<br>  Another probable solution would be to turn add,py into a class. But that would certainly bring its own unknown quantity of problems.  </p>
+<p>################################################################################</p>
+<p> date: 19/09/21<br> title: Fuzzy function working in ‘add.py’</p>
+<p> I, finally, made the ‘Thefuzz’ library, not ‘fuzzywuzzy’ anymore, working in ‘add.py’. I should’ve bee using the ‘process’ method o f the<br> library, not the default ‘fuzz.ratio’. Or, at least, that is how I made it run.<br> I’ve still to add all the other info calls, but, truth be told, I’m kind of scared of touching it after how long it took to make it work just  for similar keywords.  </p>
+<p>##################################################################################</p>
+</div></div><div class="footer"><div class="footer-copyright">Theme By <a target="_blank" rel="noopener" href="https://github.com/shinux/hexo-theme-adoubi">Adoubi</a> , Powered By Hexo.</div></div></body></html>

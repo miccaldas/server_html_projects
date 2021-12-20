@@ -1,0 +1,7 @@
+42
+"
+ CREATE TABLE MyTable(
+   ...
+   ...
+   'time' TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+ "

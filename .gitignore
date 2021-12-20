@@ -1,0 +1,10 @@
+*.log
+*.pyc
+*.swp
+*.swo
+
+php_manual_en.html
+
+__pycache__/
+xdebug/
+logs/

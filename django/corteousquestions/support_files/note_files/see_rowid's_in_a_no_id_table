@@ -1,0 +1,2 @@
+49
+SELECT rowid,* FROM test;

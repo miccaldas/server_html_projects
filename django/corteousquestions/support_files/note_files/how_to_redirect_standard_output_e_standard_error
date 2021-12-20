@@ -1,0 +1,7 @@
+441
+
+ To redirect simultaneously stfderr and stdout, use the
+ following notation:
+ -------------------------------------------------------
+ <command> &> <file>
+ -------------------------------------------------------

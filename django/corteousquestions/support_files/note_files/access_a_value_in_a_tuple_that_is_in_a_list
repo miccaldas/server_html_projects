@@ -1,0 +1,7 @@
+475
+
+ To access the second value of a tuple, that
+ that is in a list, do this:
+ --------------------------------------------
+ [x[1] for x in L]
+ --------------------------------------------
