@@ -1,0 +1,2 @@
+1
+debugfs -R 'ls -l' /dev/sda6

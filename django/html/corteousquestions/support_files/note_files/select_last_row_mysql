@@ -1,0 +1,5 @@
+88
+
+ """
+ SELECT fields FROM table ORDER BY id DESC LIMIT 1;
+ """

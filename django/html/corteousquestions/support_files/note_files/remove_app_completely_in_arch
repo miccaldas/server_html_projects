@@ -1,0 +1,7 @@
+428
+
+ To remove an app, along with its dependencies and
+ config files, use the following command:
+ --------------------------------------------------
+ yay/pacman -Rsn <app_name>
+ --------------------------------------------------

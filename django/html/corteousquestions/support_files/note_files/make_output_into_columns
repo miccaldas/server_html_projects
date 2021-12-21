@@ -1,0 +1,11 @@
+31
+"
+ Many commands output text that is hard to read
+ because the data isn’t lined up well.
+ For example, try:
+ -----------------------------------------------
+ mount
+ ----------------------------------------------
+ Use the column command to make things easier:
+ ----------------------------------------------
+ mount 

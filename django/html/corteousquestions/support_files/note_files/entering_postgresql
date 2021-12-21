@@ -1,0 +1,10 @@
+97
+
+ """
+ To enter the postgres console, type:
+ ------------------------------------
+ sudo -iu postgres
+ psql
+ ------------------------------------
+ https://tinyurl.com/27w3z4p
+ """

@@ -1,0 +1,7 @@
+537
+
+ To avoid a 'TypeError: 'module' object is not callable'
+ error when using pprint, import it like this:
+ -------------------------------------------------------
+ from pprint import pprint
+ -------------------------------------------------------

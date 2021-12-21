@@ -1,0 +1,6 @@
+125
+
+ To know the user of a application do:
+ -------------------------------------
+ ps auxw | grep <app name>
+ -------------------------------------

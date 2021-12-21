@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "tachyons-build-css": "^1.8.1"
+  },
+  "dependencies": {
+    "tachyons": "^4.12.0"
+  }
+}

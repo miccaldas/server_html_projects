@@ -6,5 +6,6 @@
 php_manual_en.html
 
 __pycache__/
+Maildir/
 xdebug/
 logs/

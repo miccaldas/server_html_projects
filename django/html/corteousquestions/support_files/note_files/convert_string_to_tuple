@@ -1,0 +1,7 @@
+474
+
+ To convert string to tuple, do:
+ -------------------------------
+ res = eval(test_str)
+ ------------------------------
+ https://www.geeksforgeeks.org/python-convert-string-to-tuple/
